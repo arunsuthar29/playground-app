@@ -15,7 +15,19 @@ const pptRoutes = require("./routes/ppt");
 const app = express();
 
 // Middlewares
-app.use(cors());
+const allowedOrigins = [
+  "https://playground-app-psi.vercel.app", // your Vercel site
+  "http://localhost:3000" // local React dev server
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
