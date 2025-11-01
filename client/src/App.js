@@ -26,10 +26,10 @@ function App() {
     setLoading(true);
 
     try {
-      const aiRes = await axios.post("http://localhost:5000/api/ai", { prompt: input });
+      const aiRes = await axios.post(`${process.env.REACT_APP_API_URL}/api/ai`, { prompt: input });
       setSlidesData(aiRes.data);
 
-      const pptRes = await axios.post("http://localhost:5000/api/ppt", aiRes.data);
+      const pptRes = await axios.post(`${process.env.REACT_APP_API_URL}/api/ppt`, aiRes.data);
       setMessages((m) => [...m, { sender: "ai", text: "✅ Slides generated successfully!" }]);
       setPptUrl(pptRes.data.downloadUrl);
     } catch (err) {
@@ -51,7 +51,7 @@ function App() {
     setMessages((m) => [...m, { sender: "user", text: `✏️ Edit: ${editInput}` }]);
 
     try {
-      const editRes = await axios.post("http://localhost:5000/api/ai/edit", {
+      const editRes = await axios.post(`${process.env.REACT_APP_API_URL}/api/ai/edit`, {
         prompt: editInput,
         slides: slidesData,
       });
@@ -60,7 +60,7 @@ function App() {
       setMessages((m) => [...m, { sender: "ai", text: "🧩 Slides updated as requested!" }]);
 
       // regenerate ppt
-      const pptRes = await axios.post("http://localhost:5000/api/ppt", editRes.data);
+      const pptRes = await axios.post(`${process.env.REACT_APP_API_URL}/api/ppt`, editRes.data);
       setPptUrl(pptRes.data.downloadUrl);
     } catch (err) {
       console.error(err);
