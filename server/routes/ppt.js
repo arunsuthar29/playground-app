@@ -120,7 +120,7 @@ router.post("/", async (req, res) => {
     const filePath = path.join(outputDir, fileName);
 
     await pptx.writeFile({ fileName: filePath });
-    res.json({ downloadUrl: `http://localhost:5000/${fileName}` });
+    res.json({ downloadUrl: `https://playground-app-9o3y.onrender.com/${fileName}` });
   } catch (err) {
     console.error("PPT generation error:", err);
     res.status(500).json({ error: "PPT generation failed", details: err.message });
