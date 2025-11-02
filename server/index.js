@@ -1,14 +1,14 @@
-// ✅ Node 20, CommonJS style
+
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const path = require("path");
 
-// Load environment variables
+
 dotenv.config();
 
-// Import routes
+
 const aiRoutes = require("./routes/ai");
 const pptRoutes = require("./routes/ppt");
 
@@ -16,8 +16,8 @@ const app = express();
 
 // Middlewares
 const allowedOrigins = [
-  "https://playground-app-psi.vercel.app", // your Vercel site
-  "http://localhost:3000" // local React dev server
+  "https://playground-app-psi.vercel.app", 
+  "http://localhost:3000" 
 ];
 
 app.use(

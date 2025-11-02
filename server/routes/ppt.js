@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
 
     const pptx = new PptxGenJS();
 
-    // ✅ Optional cover slide
+    
     if (title) {
       const cover = pptx.addSlide();
       cover.background = { color: "F5F7FA" };
@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
         color: "003366",
       });
 
-      // 📐 Layout control
+      
       let yPos = 1.4;
       const xPos = 0.7;
       const maxWidth = 8.5;
@@ -65,7 +65,7 @@ router.post("/", async (req, res) => {
           }
 
           else if (block.type === "paragraph") {
-            // 🧠 Balanced paragraph block
+            
             slide.addText(block.text || "", {
               x: xPos,
               y: yPos,
@@ -78,17 +78,17 @@ router.post("/", async (req, res) => {
               wrap: true,
               autoFit: true,
             });
-            yPos += 1.5; // ✅ reduced from 2.0 to fix big gaps
+            yPos += 1.5; 
           }
 
           else if (block.type === "list" && Array.isArray(block.items)) {
-            // ✅ Convert to bullet object array (avoids string bug)
+            
             const listItems = block.items.map((item) => ({ text: item }));
             const listHeight = Math.min(3, listItems.length * 0.35 + 0.3);
 
             slide.addText(listItems, {
               x: xPos + 0.2,
-              y: yPos + 0.2, // ✅ reduced spacing for smooth flow
+              y: yPos + 0.2, 
               w: maxWidth - 1,
               h: listHeight,
               fontSize: 16,
