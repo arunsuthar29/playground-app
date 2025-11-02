@@ -17,7 +17,7 @@ function App() {
     scrollToBottom();
   }, [messages]);
 
-  // 🧠 Generate slides
+  
   const sendPrompt = async () => {
     if (!input.trim()) return;
     const newMessages = [...messages, { sender: "user", text: input }];
