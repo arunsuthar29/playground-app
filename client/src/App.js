@@ -84,7 +84,8 @@ function App() {
           {messages.length === 0 ? (
             <div className="placeholder">
               💡 Ask me to create slides! <br />
-              <em>Example:</em> “Create 5 slides on AI in Healthcare”
+              <em>Example:</em> “Create 5 slides on AI in Healthcare” <br/>
+              <em>Note:</em> “Free-tier hosting causes a 30–40s cold start delay on the first request; after that, responses take only 1–2s”
             </div>
           ) : (
             messages.map((msg, i) => (
